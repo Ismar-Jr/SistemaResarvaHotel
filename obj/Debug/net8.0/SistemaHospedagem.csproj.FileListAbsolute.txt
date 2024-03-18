@@ -1,0 +1,15 @@
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/SistemaHospedagem
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/SistemaHospedagem.deps.json
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/SistemaHospedagem.runtimeconfig.json
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/SistemaHospedagem.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/SistemaHospedagem.pdb
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.GeneratedMSBuildEditorConfig.editorconfig
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.AssemblyInfoInputs.cache
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.AssemblyInfo.cs
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.csproj.CoreCompileInputs.cache
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.sourcelink.json
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/refint/SistemaHospedagem.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.pdb
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.genruntimeconfig.cache
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/ref/SistemaHospedagem.dll
