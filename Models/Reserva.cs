@@ -24,18 +24,21 @@ namespace SistemaHospedagem.Models
         // Método para cadastrar hóspedes
         public void CadastrarHospedes()
         {
+            TelaMenu tela = new TelaMenu();
             int id = 0;
             string cont;
     
             do
             {
+                Console.Clear();
+                tela.Cabeçalho("CADASTRO DE HÓSPEDES");
                 id++;
                 Pessoa hospede = new Pessoa();
                 Console.WriteLine("Digite o nome do hóspede: ");
                 hospede.Nome = Console.ReadLine();
                 Console.WriteLine("Digite o sobrenome: ");
                 hospede.Sobrenome = Console.ReadLine();
-        
+                hospede.Hospedado = "Não";
                 // Verifica se a chave já existe no dicionário, senão, adiciona uma nova lista vazia
                 bool adicionar = false;
                 do
@@ -71,7 +74,7 @@ namespace SistemaHospedagem.Models
         
         public decimal CalcularValorDiária()
         {
-            Suite<decimal> _suite = new Suite<decimal>();
+            Suite _suite = new Suite();
             if (_listandoHospedes.Count < 10)
             {
                 return _diasReservados * _suite.ValorDiaria;

@@ -8,7 +8,7 @@ namespace SistemaHospedagem.Models
         
         
         // Dicionário que armazena a lista de hóspedes da reserva
-        private Dictionary<int, List<Pessoa>> _listar = _cadastro.ListandoHospedes;
+        public Dictionary<int, List<Pessoa>> _listar = _cadastro.ListandoHospedes;
         
         private void TelaPrincipal()
         {
@@ -23,18 +23,16 @@ namespace SistemaHospedagem.Models
                               "\n                      2. Cadastrar Hospede" +
                               "\n                      3. Reservar Suite" +
                               "\n                      4. Listar Hospedes" +
-                              "\n                      5. Listar Suites"+
-                              "\n                      6. Fazer Check-out" +
-                              "\n                      7. Sair" + 
+                              "\n                      5. Listar Suites" +
+                              "\n                      6. Sair" + 
                               "\n___________________________________________________________________\n");
         }
 
-        // Método responsável por apresentar as opções do menu ao usuário e executar a ação correspondente
-        // Método responsável por apresentar as opções do menu ao usuário e executar a ação correspondente
+       // Método responsável por apresentar as opções do menu ao usuário e executar a ação correspondente
         public void MenuOpcpes()
         {
             bool sair = false;
-            Suite<string> suite = new Suite<string>();
+            Suite suite = new Suite();
             do
             {
                 Console.Clear();
@@ -50,11 +48,12 @@ namespace SistemaHospedagem.Models
                         suite.CadastarSuites();
                         break;
                     case 2:
+                        Console.Clear();
                         _cadastro.CadastrarHospedes();
                         break;
                     case 3:
                         Console.Clear();
-                        suite.ListarSuites();
+                        suite.ReservarSuite();
                         LimparTela();
                         break;
                     case 4:
@@ -67,13 +66,7 @@ namespace SistemaHospedagem.Models
                         suite.ListarSuites();
                         LimparTela();
                         break;
-                    /*case 6:
-                        ListarHospedes();
-                        Console.WriteLine("Digite o ID do hóspede:");
-                        Console.WriteLine("Obrigado pela estadia em nosso hotel!" +
-                                          $"\n O valor total a pagar é: {_cadastro.CalcularValorDiária():C}");
-                        break;*/
-                    case 7:
+                    case 6:
                         sair = true;
                         break;
                     default:
@@ -102,6 +95,14 @@ namespace SistemaHospedagem.Models
                               "\n___________________________________________________________________\n");
         }
 
+        public void Cabeçalho(string texto)
+        {
+            Console.WriteLine("____________________________________________________________________" +
+                              "\n           " +
+                              $"\n                     ### {texto} ###            " +
+                              "\n____________________________________________________________________");
+        }
+
         // Método responsável por limpar a tela do console
         public void LimparTela()
         {
@@ -113,15 +114,12 @@ namespace SistemaHospedagem.Models
         // Método responsável por listar os hóspedes cadastrados na reserva
         public void ListarHospedes()
         {
-            Console.WriteLine("____________________________________________________________________" +
-                              "\n           " +
-                              "\n                     ### LISTA DE HOSPEDES ###            " +
-                              "\n____________________________________________________________________");
+            Cabeçalho("LISTA DE HÓSPEDES");
             foreach (var hospede in _listar)
             {
                 foreach (var pessoa in hospede.Value)
                 {
-                    Console.WriteLine($"              ID {hospede.Key}. Nome: {pessoa.Nome} {pessoa.Sobrenome}");
+                    Console.WriteLine($"\n              ID {hospede.Key}. Nome: {pessoa.Nome} {pessoa.Sobrenome} {(pessoa.Hospedado != "Não" ? pessoa.Hospedado : "- Não está hospedado")}");
                 }
             }
             Console.WriteLine("___________________________________________________________________\n");

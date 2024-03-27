@@ -1,9 +1,9 @@
 namespace SistemaHospedagem.Models
 {
-    public class Suite<T> : TelaMenu
+    public class Suite : TelaMenu
     {
-        private Dictionary<int, List<T>> _listarSuites = new Dictionary<int, List<T>>();
-        private List<T> _detalhesSuite = new List<T>();
+        private Dictionary<int, List<string>> _listarSuites = new Dictionary<int, List<string>>();
+        private List<string> _detalhesSuite = new List<string>();
         private string _tipoSuite = " ";
         private int _capacidade;
         private decimal _valorDiaria;
@@ -26,6 +26,7 @@ namespace SistemaHospedagem.Models
             set { _valorDiaria = value; }
         }
 
+// METODO PARA DETERMINAR A CAPACIDADE DE CADA SUITE
         public void DefinirCapacidade()
         {
             do
@@ -46,22 +47,23 @@ namespace SistemaHospedagem.Models
                 }
             } while (Capacidade == 0);
 
-            _detalhesSuite.Add((T)Convert.ChangeType(Capacidade, typeof(T)));
+            _detalhesSuite.Add(Capacidade.ToString());
 
         }
-
+        // METODO PARA DETERMINAR O VALOR DA DIÁRIA DE CADA SUITE
         public void DefinirValorDiaria()
         {
             Console.WriteLine("Qual é o valor da diária?");
             decimal.TryParse(Console.ReadLine(), out decimal diaria);
             ValorDiaria = diaria;
-            _detalhesSuite.Add((T)Convert.ChangeType(ValorDiaria, typeof(T)));
+            _detalhesSuite.Add(ValorDiaria.ToString());
         }
 
+        // METODO PARA CADASTRAR UMA NOVA SUITE
         public void CadastarSuites()
         {
             bool sair = false;
-            int id = 0; // Inicializar a variável id
+            int id = 1;
             do
             {
                 MenuOpcoesSuite();
@@ -93,14 +95,24 @@ namespace SistemaHospedagem.Models
                 if (opcao != 5)
                 {
                     _detalhesSuite.Clear();
-                    _detalhesSuite.Add((T)Convert.ChangeType(TipoSuite, typeof(T)));
+                    _detalhesSuite.Add(TipoSuite);
                     DefinirCapacidade();
                     DefinirValorDiaria();
 
-                    id++;
-                    _listarSuites[id] = new List<T>();
+                    bool adicionar = false;
+                    do
+                    {
+                        if (!_listarSuites.ContainsKey(id))
+                        {
+                            _listarSuites[id] = new List<string>();
+                            adicionar = true;
+                        }
+                        else
+                        {
+                            id++;
+                        }
+                    } while (!adicionar);
                     _listarSuites[id].AddRange(_detalhesSuite);
-
 
 
                     string resposta = "";
@@ -133,36 +145,73 @@ namespace SistemaHospedagem.Models
 
         public void ListarSuites()
         {
-            int cont = 0;
-            Console.WriteLine("____________________________________________________________________" +
-                              "\n           " +
-                              "\n                     ### LISTA DE SUITE ###            " +
-                              "\n____________________________________________________________________");
-            foreach (var suites in _listarSuites)
+            Cabeçalho("LISTA DE SUITES");
+
+            foreach (var suite in _listarSuites)
             {
-                Console.WriteLine($"\nID {suites.Key}");
-                do
+                Console.WriteLine($"\n          ID {suite.Key}");
+        
+                for (int i = 0; i < suite.Value.Count; i++)
                 {
-                    switch (cont)
+                    switch (i)
                     {
                         case 0:
-                            Console.WriteLine($"Tipo: {suites.Value[cont]}");
-                            cont++;
+                            Console.WriteLine($"          Tipo: {suite.Value[i]}");
                             break;
                         case 1:
-                            Console.WriteLine($"Capacidade: {suites.Value[cont]} pessoas");
-                            cont++;
+                            Console.WriteLine($"          Capacidade: {suite.Value[i]} pessoas");
                             break;
                         case 2:
-                            Console.WriteLine($"Valor da diária: {suites.Value[cont]}");
-                            cont = 0;
+                            if (decimal.TryParse(suite.Value[i] as string, out decimal valorDiaria))
+                            {
+                                Console.WriteLine($"          Valor da diária: {valorDiaria:C}");
+                            }
+                            break;
+                        case 3 :
+                            if (suite.Value[i].Equals("Reservada"))
+                            {
+                                Console.WriteLine("          A suite está reservada");
+                            }
                             break;
                     }
-                }while(cont !=0);
-
+                }
             }
+        }
 
 
+        public void ReservarSuite()
+        {
+            Reserva hospedeReserva = new Reserva();
+            int vagas = 0;
+            ListarSuites();
+            Console.WriteLine("Escolha uma das suites desocupadas para reservar: (Digite o ID) ");
+            int.TryParse(Console.ReadLine(), out int reserva);
+            
+            
+            foreach (var reservada in _listarSuites)
+            {
+                if (reservada.Key == reserva)
+                {
+                    int.TryParse(reservada.Value[1], out vagas);
+                    reservada.Value.Add("Reservada");
+                }
+            }
+            
+            Console.WriteLine($"A suite tem espaço para {vagas} pessoas: ");
+            ListarHospedes();
+            Console.WriteLine("Escolha o ID do hóspede que fará a reserva. ");
+            int.TryParse(Console.ReadLine(), out int hospede);
+            foreach (var item in _listar)
+            {
+                if (item.Key == hospede)
+                {
+                    foreach (var pessoa in item.Value)
+                    {
+                        pessoa.Hospedado = $"- Hospedado na suite {reserva}";
+                    }
+                }
+            }
+            
         }
     }
 

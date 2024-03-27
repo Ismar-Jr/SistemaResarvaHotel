@@ -4,5 +4,8 @@ namespace SistemaHospedagem.Models
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+        
+        public string Hospedado { get; set; }
+        
     }
 }
