@@ -181,6 +181,8 @@ namespace SistemaHospedagem.Models
 
         public void ReservarSuite()
         {
+            bool resp = true;
+            string cont = "";
             Reserva hospedeReserva = new Reserva();
             int vagas = 0;
             ListarSuites();
@@ -196,22 +198,44 @@ namespace SistemaHospedagem.Models
                     reservada.Value.Add("Reservada");
                 }
             }
-            
-            Console.WriteLine($"A suite tem espaço para {vagas} pessoas: ");
+            LimparTela();
             ListarHospedes();
-            Console.WriteLine("Escolha o ID do hóspede que fará a reserva. ");
-            int.TryParse(Console.ReadLine(), out int hospede);
-            foreach (var item in _listar)
+            Console.WriteLine($"Você pode cadastra no máximo {vagas} hóspedes: ");
+            
+            while (vagas > 0 && resp == true)
             {
-                if (item.Key == hospede)
+                Console.WriteLine("Escolha o ID do hóspede que fará a reserva. ");
+                int.TryParse(Console.ReadLine(), out int hospede);
+                foreach (var item in _listar)
                 {
-                    foreach (var pessoa in item.Value)
+                    if (item.Key == hospede)
                     {
-                        pessoa.Hospedado = $"- Hospedado na suite {reserva}";
+                        foreach (var pessoa in item.Value)
+                        {
+                            pessoa.Hospedado = $"- Hospedado na suite {reserva}";
+                        }
                     }
                 }
+                do
+                {
+                    Console.WriteLine("Deseja cadastrar mais um hóspede? S/N ");
+                    cont = Console.ReadLine().ToUpper();
+                    if (cont == "N")
+                    {
+                        resp = false;
+                    }
+                    else if (cont == "S")
+                    {
+                        vagas--;
+                        
+                    }
+                    else if (cont != "S" && cont != "N")
+                    {
+                        Console.WriteLine("Opção inválida!" +
+                                          "\n Digite S ou N");
+                    }
+                } while (cont != "S" && cont != "N" );
             }
-            
         }
     }
 

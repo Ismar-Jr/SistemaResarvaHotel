@@ -119,7 +119,7 @@ namespace SistemaHospedagem.Models
             {
                 foreach (var pessoa in hospede.Value)
                 {
-                    Console.WriteLine($"\n              ID {hospede.Key}. Nome: {pessoa.Nome} {pessoa.Sobrenome} {(pessoa.Hospedado != "Não" ? pessoa.Hospedado : "- Não está hospedado")}");
+                    Console.WriteLine($"\n              ID {hospede.Key}. Nome: {pessoa.Nome} {pessoa.Sobrenome} {(pessoa.Hospedado != "Não" ? pessoa.Hospedado : "")}");
                 }
             }
             Console.WriteLine("___________________________________________________________________\n");
