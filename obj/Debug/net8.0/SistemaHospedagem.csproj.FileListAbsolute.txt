@@ -13,3 +13,15 @@
 /home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.pdb
 /home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.genruntimeconfig.cache
 /home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/ref/SistemaHospedagem.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaHospedagem.csproj.AssemblyReference.cache
+/home/ismar/Documentos/Curso_C#/SistemaHospedagem/obj/Debug/net8.0/SistemaH.B3A92D23.Up2Date

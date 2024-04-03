@@ -21,6 +21,7 @@ namespace SistemaHospedagem.Models
             }
         }
 
+        
         // Método para cadastrar hóspedes
         public void CadastrarHospedes()
         {

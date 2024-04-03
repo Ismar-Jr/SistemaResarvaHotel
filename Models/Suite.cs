@@ -185,6 +185,7 @@ namespace SistemaHospedagem.Models
             string cont = "";
             Reserva hospedeReserva = new Reserva();
             int vagas = 0;
+            decimal valor = 0;
             ListarSuites();
             Console.WriteLine("Escolha uma das suites desocupadas para reservar: (Digite o ID) ");
             int.TryParse(Console.ReadLine(), out int reserva);
@@ -195,6 +196,7 @@ namespace SistemaHospedagem.Models
                 if (reservada.Key == reserva)
                 {
                     int.TryParse(reservada.Value[1], out vagas);
+                    decimal.TryParse(reservada.Value[2], out valor);
                     reservada.Value.Add("Reservada");
                 }
             }
@@ -235,6 +237,18 @@ namespace SistemaHospedagem.Models
                                           "\n Digite S ou N");
                     }
                 } while (cont != "S" && cont != "N" );
+                
+                Console.WriteLine("Quantos dias você deseja reservar?");
+                int.TryParse(Console.ReadLine(), out int dias);
+                if (dias >= 10)
+                {
+                    Console.WriteLine($"O valor total a pagar pela reserva é: {(((dias * valor)/100) * 90):C}");
+                }
+                else
+                {
+                    Console.WriteLine($"O valor total a pagar pela reserva é: {(dias * valor):C}");
+                }
+                
             }
         }
     }
