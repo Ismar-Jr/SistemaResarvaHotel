@@ -224,6 +224,16 @@ namespace SistemaHospedagem.Models
                     cont = Console.ReadLine().ToUpper();
                     if (cont == "N")
                     {
+                        Console.WriteLine("Quantos dias você deseja reservar?");
+                        int.TryParse(Console.ReadLine(), out int dias);
+                        if (dias >= 10)
+                        {
+                            Console.WriteLine($"O valor total a pagar pela reserva é: {(((dias * valor)/100) * 90):C}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"O valor total a pagar pela reserva é: {(dias * valor):C}");
+                        }
                         resp = false;
                     }
                     else if (cont == "S")
@@ -238,16 +248,7 @@ namespace SistemaHospedagem.Models
                     }
                 } while (cont != "S" && cont != "N" );
                 
-                Console.WriteLine("Quantos dias você deseja reservar?");
-                int.TryParse(Console.ReadLine(), out int dias);
-                if (dias >= 10)
-                {
-                    Console.WriteLine($"O valor total a pagar pela reserva é: {(((dias * valor)/100) * 90):C}");
-                }
-                else
-                {
-                    Console.WriteLine($"O valor total a pagar pela reserva é: {(dias * valor):C}");
-                }
+                
                 
             }
         }
